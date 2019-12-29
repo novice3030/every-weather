@@ -1,0 +1,13 @@
+:host {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+::ng-deep {
+    .mat-radio-label-content {
+        font-size: 14px;
+    }
+    .mat-radio-button {
+        margin-right: 10px;
+    }
+}

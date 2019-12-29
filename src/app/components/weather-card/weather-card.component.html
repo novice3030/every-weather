@@ -1,0 +1,25 @@
+<mat-card class="card" [ngClass]="{clickable: clickable}" *ngIf="weather" (click)="onWeatherCardClicked()">
+    <mat-card-title *ngIf="!weather.isForecast"
+        >Current Weather in {{ cityName }}</mat-card-title
+    >
+    <mat-card-title *ngIf="weather.isForecast">
+        {{ weather.date | moment: 'dddd' }}
+    </mat-card-title>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-sm-12" *ngIf="weather.date">{{ weather.text }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                Temperature
+            </div>
+            <div class="col-sm-6" *ngIf="!weather.isForecast">
+                {{ weather.temperature.metricValue }}
+                {{ weather.temperature.metricUnit }}
+            </div>
+            <div class="col-sm-6" *ngIf="weather.isForecast">
+                {{ weather.temperature.minMetricValue }} C - {{ weather.temperature.maxMetricValue }} C
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

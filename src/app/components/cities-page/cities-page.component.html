@@ -1,0 +1,54 @@
+<div class="row center-sm middle-sm cities-search-container">
+    <div class="col-sm-12 col-md-8 col-xs-12">
+        <app-city-selector></app-city-selector>
+        <button
+            matTooltip="Remove from favorites"
+            *ngIf="(isSelectedCityInFavorites$ | async) === true"
+            (click)="onRemoveFromFavoritesClicked()"
+            class="add-to-favorites-button"
+            mat-raised-button
+            color="primary"
+            [disabled]="!(selectedCity$ | async)"
+        >
+            <mat-icon class="favorite-icon strike-center">
+                favorite
+            </mat-icon>
+        </button>
+        <button
+            matTooltip="Add to favorites"
+            *ngIf="(isSelectedCityInFavorites$ | async) === false"
+            (click)="onAddToFavoritesClicked()"
+            class="add-to-favorites-button"
+            mat-raised-button
+            color="primary"
+            [disabled]="!(selectedCity$ | async)"
+        >
+            <mat-icon>
+                favorite
+            </mat-icon>
+        </button>
+    </div>
+</div>
+<div class="weather-container" *ngIf="selectedCity$ | async as selectedCity">
+    <h3>Current:</h3>
+    <div class="row">
+        <div class="col-sm-4">
+            <app-weather-card
+                [cityName]="selectedCity.name"
+                [weather]="currentWeather$ | async"
+            ></app-weather-card>
+        </div>
+    </div>
+    <h3>Next 5 days:</h3>
+    <div class="row">
+        <div
+            class="col forecast-card"
+            *ngFor="let weather of weatherForecasts$ | async"
+        >
+            <app-weather-card
+                [cityName]="selectedCity.name"
+                [weather]="weather"
+            ></app-weather-card>
+        </div>
+    </div>
+</div>
