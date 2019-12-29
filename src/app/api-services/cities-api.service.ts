@@ -14,7 +14,7 @@ export class CitiesApiService {
     searchCities(searchQuery: string): Observable<City[]> {
         return this.http
             .get<City[]>(
-                `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchQuery}`
+                `https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${searchQuery}`
             )
             .pipe(
                 map((results: any[]) =>

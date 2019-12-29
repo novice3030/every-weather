@@ -16,7 +16,7 @@ export class WeatherApiService {
     getCurrentWeather(cityId: string): Observable<Weather> {
         return this.http
             .get<any>(
-                `http://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${API_KEY}`
+                `https://dataservice.accuweather.com/currentconditions/v1/${cityId}?apikey=${API_KEY}`
             )
             .pipe(
                 map(apiResult => {
@@ -53,7 +53,7 @@ export class WeatherApiService {
     getWeatherForecast(cityId: string): Observable<Weather[]> {
         return this.http
             .get<any>(
-                `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}?apikey=${API_KEY}&metric=true`
+                `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityId}?apikey=${API_KEY}&metric=true`
             )
             .pipe(
                 map(result =>

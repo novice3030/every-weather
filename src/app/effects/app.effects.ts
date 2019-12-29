@@ -106,7 +106,10 @@ export class AppEffects {
             const favorites: Favorite[] = JSON.parse(
                 window.localStorage.getItem('favorites')
             );
-            return new LoadFavorites({ favorites });
+            if (favorites && favorites.length > 0) {
+                return new LoadFavorites({ favorites });
+            }
+            return new LoadFavorites({favorites: []});
         })
     );
 

@@ -6,14 +6,12 @@ export const citiesFeatureKey = 'cities';
 
 export interface State extends EntityState<City> {
     selectedCityId: string;
-    favorites: string[];
 }
 
 export const adapter: EntityAdapter<City> = createEntityAdapter<City>();
 
 export const initialState: State = adapter.getInitialState({
     selectedCityId: null,
-    favorites: [],
 });
 
 export function reducer(state = initialState, action: CityActions): State {
