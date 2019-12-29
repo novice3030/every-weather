@@ -6,6 +6,7 @@
             (cardClick)="onWeatherCardClicked(favorite)"
             [cityName]="favorite.cityName"
             [weather]="getWeatherByCityId(favorite.id) | async"
+            [isImpirial]="isImpirial$ | async"
         ></app-weather-card>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { isSelectedCityInFavorites } from './../../reducers/index';
+import { isSelectedCityInFavorites, isImpirial } from './../../reducers/index';
 import {
     AddSelectedCityToFavorites,
     RemoveSelectedCityFromFavorites,
@@ -14,6 +14,7 @@ import {
     getSelectedCityWeatherForcasts,
 } from '../../reducers';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { AppSettings } from 'src/app/reducers/app-settings.model';
 
 @Component({
     selector: 'app-cities-page',
@@ -25,14 +26,17 @@ export class CitiesPageComponent implements OnInit {
     isSelectedCityInFavorites$: Observable<boolean>;
     currentWeather$: Observable<Weather>;
     weatherForecasts$: Observable<Weather[]>;
+    isImpirial$: Observable<boolean>;
     title = 'every-weather';
 
     constructor(
         private cityStore: Store<City>,
-        private weatherStore: Store<Weather>
+        private weatherStore: Store<Weather>,
+        private appSettingsStore: Store<AppSettings>
     ) {}
 
     ngOnInit() {
+        this.isImpirial$ = this.appSettingsStore.pipe(select(isImpirial));
         this.selectedCity$ = this.cityStore.pipe(select(getCurrentCity));
         this.isSelectedCityInFavorites$ = this.cityStore.pipe(
             select(isSelectedCityInFavorites),

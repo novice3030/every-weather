@@ -36,6 +36,7 @@
             <app-weather-card
                 [cityName]="selectedCity.name"
                 [weather]="currentWeather$ | async"
+                [isImpirial]="isImpirial$ | async"
             ></app-weather-card>
         </div>
     </div>
@@ -48,6 +49,7 @@
             <app-weather-card
                 [cityName]="selectedCity.name"
                 [weather]="weather"
+                [isImpirial]="isImpirial$ | async"
             ></app-weather-card>
         </div>
     </div>

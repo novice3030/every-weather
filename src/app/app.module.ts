@@ -1,13 +1,13 @@
-import { environment } from './../environments/environment'
-import { AppEffects } from './effects/app.effects'
-import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
+import { environment } from './../environments/environment';
+import { AppEffects } from './effects/app.effects';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app.component'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { StoreModule } from '@ngrx/store'
-import { reducers, metaReducers } from './reducers'
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 import {
     MatToolbarModule,
     MatIconModule,
@@ -19,21 +19,31 @@ import {
     MatRadioModule,
     MatMenuModule,
     MatTooltipModule,
-} from '@angular/material'
-import { CityselectorComponent } from './components/city-selector/city-selector.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { EffectsModule } from '@ngrx/effects'
-import { HttpClientModule } from '@angular/common/http'
-import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { WeatherCardComponent } from './components/weather-card/weather-card.component'
+} from '@angular/material';
+import { CityselectorComponent } from './components/city-selector/city-selector.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { WeatherCardComponent } from './components/weather-card/weather-card.component';
 import { MomentModule } from 'ngx-moment';
 import { MomentPipe } from './pipes/moment.pipe';
 import { CitiesPageComponent } from './components/cities-page/cities-page.component';
 import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
-import { UnitsSelectorComponent } from './components/units-selector/units-selector.component'
+import { UnitsSelectorComponent } from './components/units-selector/units-selector.component';
+import { ImpirialPipe } from './pipes/impirial.pipe';
 
 @NgModule({
-    declarations: [AppComponent, CityselectorComponent, WeatherCardComponent, MomentPipe, CitiesPageComponent, FavoritesPageComponent, UnitsSelectorComponent],
+    declarations: [
+        AppComponent,
+        CityselectorComponent,
+        WeatherCardComponent,
+        MomentPipe,
+        CitiesPageComponent,
+        FavoritesPageComponent,
+        UnitsSelectorComponent,
+        ImpirialPipe,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

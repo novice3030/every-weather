@@ -11,12 +11,17 @@ export class WeatherCardComponent implements OnInit {
     @Input() weather: Weather;
     @Input() cityName: string;
     @Input() clickable = false;
-    @Output() cardClick = new EventEmitter<Weather>()
+    @Input() isImpirial = false;
+    @Output() cardClick = new EventEmitter<Weather>();
     constructor() {}
 
     ngOnInit() {}
 
     onWeatherCardClicked() {
         this.cardClick.emit(this.weather);
+    }
+
+    get degreesUnit(): string {
+        return this.isImpirial ? 'F' : 'C';
     }
 }

@@ -1,5 +1,5 @@
 import { AddCity } from './../../reducers/city.actions';
-import { selectFavorites, getWeatherByCityId } from './../../reducers/index';
+import { selectFavorites, getWeatherByCityId, isImpirial } from './../../reducers/index';
 import {
     LoadFavoritesPage,
     LoadFavoritesFromLocalStorage,
@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { SelectCity } from 'src/app/reducers/city.actions';
 import { Router } from '@angular/router';
+import { AppSettings } from 'src/app/reducers/app-settings.model';
 
 @Component({
     selector: 'app-favorites-page',
@@ -19,14 +20,17 @@ import { Router } from '@angular/router';
 })
 export class FavoritesPageComponent implements OnInit {
     favorites$: Observable<Favorite[]>;
+    isImpirial$: Observable<boolean>;
     constructor(
         private favoriteStore: Store<Favorite>,
         private weatherStore: Store<Weather>,
+        private appSettingsStore: Store<AppSettings>,
         private router: Router
     ) {}
 
     ngOnInit() {
-        this.favoriteStore.dispatch(new LoadFavoritesPage());
+      this.isImpirial$ = this.appSettingsStore.pipe(select(isImpirial));  
+      this.favoriteStore.dispatch(new LoadFavoritesPage());
         this.favorites$ = this.favoriteStore.pipe(select(selectFavorites));
     }
 

@@ -111,3 +111,8 @@ export const isSelectedCityInFavorites = createSelector(
         return false;
     }
 );
+
+export const isImpirial = createSelector(
+    selectAppSettings,
+    appSettings => appSettings.degreesUnit === 'IMPIRIAL'
+);
