@@ -12,11 +12,12 @@
     <mat-icon matSuffix>
         search
     </mat-icon>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="onOptionSelected($event)"
+    >
         <mat-option *ngFor="let city of cities$ | async" [value]="city">
             {{ city.name }}
         </mat-option>
     </mat-autocomplete>
 </mat-form-field>
-
-

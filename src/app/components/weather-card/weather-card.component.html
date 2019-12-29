@@ -4,25 +4,33 @@
     *ngIf="weather"
     (click)="onWeatherCardClicked()"
 >
-    <mat-card-title *ngIf="!weather.isForecast"
-        >Current Weather in {{ cityName }}</mat-card-title
-    >
+    <mat-card-title *ngIf="!weather.isForecast">
+        Current Weather in {{ cityName }}
+    </mat-card-title>
     <mat-card-title *ngIf="weather.isForecast">
         {{ weather.date | moment: 'dddd' }}
     </mat-card-title>
     <mat-card-content>
         <div class="row">
-            <div class="col-sm-12 col-xs-6 col-md-6" *ngIf="weather.date">{{ weather.text }}</div>
+            <div class="col-sm-12 col-xs-6 col-md-6" *ngIf="weather.date">
+                {{ weather.text }}
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6 col-xs-6 col-md-6">
                 Temperature
             </div>
-            <div class="col-sm-6 col-xs-6 col-md-6 text-end" *ngIf="!weather.isForecast">
+            <div
+                class="col-sm-6 col-xs-6 col-md-6 text-end"
+                *ngIf="!weather.isForecast"
+            >
                 {{ weather.temperature.metricValue | impirial: isImpirial }}
                 {{ degreesUnit }}
             </div>
-            <div class="col-sm-6 col-xs-6 col-md-6 text-end" *ngIf="weather.isForecast">
+            <div
+                class="col-sm-6 col-xs-6 col-md-6 text-end"
+                *ngIf="weather.isForecast"
+            >
                 {{ weather.temperature.minMetricValue | impirial: isImpirial }}
                 {{ degreesUnit }} -
                 {{ weather.temperature.maxMetricValue | impirial: isImpirial }}
