@@ -78,3 +78,5 @@ export const {
 } = adapter.getSelectors();
 
 export const getSelectedCityId = (state: State) => state.selectedCityId;
+
+

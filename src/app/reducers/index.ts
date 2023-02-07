@@ -11,6 +11,7 @@ import * as fromAppSettings from '../reducers/app-settings.reducer';
 import * as fromFavorite from '../reducers/favorite.reducer';
 import { Dictionary } from '@ngrx/entity';
 import { Weather } from './weather.model';
+import { City } from './city.model';
 
 export interface State {}
 
@@ -59,6 +60,12 @@ export const selectCurrentCityId = createSelector(
 export const selectCityEntities = createSelector(
     selectCityState,
     fromCity.selectEntities
+);
+
+export const queryCities = createSelector(
+    selectCities,
+    (cities: City[], props: string) =>
+        cities.filter(city => city.name.includes(props))
 );
 
 export const selectWeatherEntities = createSelector(

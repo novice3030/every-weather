@@ -2,7 +2,6 @@ import {
     SearchCities,
     SelectCity,
     ClearSelectedCity,
-    AddCity,
 } from '../../reducers/city.actions';
 import {
     Component,
@@ -12,13 +11,12 @@ import {
     AfterViewInit,
     OnDestroy,
 } from '@angular/core';
-import { fromEvent, Observable } from 'rxjs';
-import { debounceTime, tap } from 'rxjs/operators';
+import { fromEvent, Observable, of } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { City } from '../../reducers/city.model';
-import * as fromCity from '../../reducers/city.reducer';
-import { selectCities, getCurrentCity } from '../../reducers';
+import { selectCities, getCurrentCity, queryCities } from '../../reducers';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { SubSink } from 'SubSink';
 
@@ -53,13 +51,23 @@ export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
             .pipe(debounceTime(300))
             .subscribe((event: KeyboardEvent) => {
                 if (this.cityInput.value) {
-                    this.cityStore.dispatch(
-                        new SearchCities({ query: this.cityInput.value })
+                    this.subs.add(
+                        this.cityStore
+                            .select(queryCities, this.cityInput.value)
+                            .subscribe(cities => {
+                                if (cities.length > 0) {
+                                    this.cities$ = of(cities);
+                                } else {
+                                    this.cityStore.dispatch(
+                                        new SearchCities({
+                                            query: this.cityInput.value,
+                                        })
+                                    );
+                                }
+                            })
                     );
                 } else {
-                    this.cityStore.dispatch(
-                        new ClearSelectedCity()
-                    );
+                    this.cityStore.dispatch(new ClearSelectedCity());
                 }
             });
     }
