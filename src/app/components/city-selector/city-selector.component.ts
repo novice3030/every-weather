@@ -26,7 +26,7 @@ import { SubSink } from 'SubSink';
     styleUrls: ['./city-selector.component.scss'],
 })
 export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
-    @ViewChild('autoCompleteInput', { static: false })
+    @ViewChild('autoCompleteInput')
     autoCompleteInput: ElementRef;
     cityInput: FormControl = new FormControl();
     cities$: Observable<City[]>;
