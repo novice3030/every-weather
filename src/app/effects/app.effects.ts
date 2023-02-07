@@ -22,7 +22,7 @@ import {
     SelectCity,
 } from './../reducers/city.actions';
 import { Injectable } from '@angular/core';
-import { Actions, Effect, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap, map, withLatestFrom } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { City } from '../reducers/city.model';
@@ -89,18 +89,18 @@ export class AppEffects {
     );
 
     // saves favorites cities from the store to local storage
-    @Effect({ dispatch: false })
-    saveFavoritesToLocalStorage$ = this.actions$.pipe(
+    
+    saveFavoritesToLocalStorage$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.SaveFavoritesToLocalStorage),
         withLatestFrom(this.cityStore.pipe(select(selectFavorites))),
         map(([, favorites]) =>
             window.localStorage.setItem('favorites', JSON.stringify(favorites))
         )
-    );
+    ), { dispatch: false });
 
     // load favorites from local storage and load them to the store
-    @Effect()
-    loadFavoritesFromLocalStorage$ = this.actions$.pipe(
+    
+    loadFavoritesFromLocalStorage$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.LoadFavoritesFromLocalStorage),
         map(() => {
             const favorites: Favorite[] = JSON.parse(
@@ -111,18 +111,18 @@ export class AppEffects {
             }
             return new LoadFavorites({favorites: []});
         })
-    );
+    ));
 
     // when a favorite is added to the store save the favorites to local storage
-    @Effect()
-    addToFavorites$ = this.actions$.pipe(
+    
+    addToFavorites$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.AddFavorite),
         mergeMap(() => [new SaveFavoritesToLocalStorage()])
-    );
+    ));
 
     // add the selected city to the favorites store
-    @Effect()
-    addSelectedCityToFavorites$ = this.actions$.pipe(
+    
+    addSelectedCityToFavorites$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.AddSelectedCityToFavorites),
         withLatestFrom(this.cityStore.pipe(select(getCurrentCity))),
         map(
@@ -134,11 +134,11 @@ export class AppEffects {
                     },
                 })
         )
-    );
+    ));
 
     // loads the favorites page data from the api
-    @Effect()
-    loadFavoritesPage$ = this.actions$.pipe(
+    
+    loadFavoritesPage$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.LoadFavoritesPage),
         withLatestFrom(this.favoriteStore.pipe(select(selectFavoriteIds))),
         mergeMap(([, ids]) =>
@@ -146,22 +146,22 @@ export class AppEffects {
                 .getCurrentWeatherForMultipleCities(ids as string[])
                 .pipe(map(weathers => new LoadWeathers({ weathers })))
         )
-    );
+    ));
 
     // remove the selected city from the store
-    @Effect()
-    removeSelectedCityFromFavorites$ = this.actions$.pipe(
+    
+    removeSelectedCityFromFavorites$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.RemoveSelectedCityFromFavorites),
         withLatestFrom(this.cityStore.pipe(select(selectCurrentCityId))),
         map(([, selectedCityId]) => new DeleteFavorite({ id: selectedCityId }))
-    );
+    ));
 
     // when a favorite is removed save the favorites to local storage
-    @Effect()
-    deleteFavorite$ = this.actions$.pipe(
+    
+    deleteFavorite$ = createEffect(() => this.actions$.pipe(
         ofType(FavoriteActionTypes.DeleteFavorite),
         mergeMap(() => [new SaveFavoritesToLocalStorage()])
-    );
+    ));
 
     constructor(
         private actions$: Actions,
