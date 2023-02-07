@@ -16,11 +16,13 @@ import { Store, select } from '@ngrx/store';
 import { SelectCity } from 'src/app/reducers/city.actions';
 import { Router } from '@angular/router';
 import { AppSettings } from 'src/app/reducers/app-settings.model';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-favorites-page',
   templateUrl: './favorites-page.component.html',
   styleUrls: ['./favorites-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavoritesPageComponent implements OnInit {
   favorites$: Observable<Favorite[]>;

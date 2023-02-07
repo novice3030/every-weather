@@ -19,11 +19,13 @@ import { City } from '../../reducers/city.model';
 import { selectCities, getCurrentCity, queryCities } from '../../reducers';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { SubSink } from 'SubSink';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-city-selector',
   templateUrl: './city-selector.component.html',
   styleUrls: ['./city-selector.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('autoCompleteInput')

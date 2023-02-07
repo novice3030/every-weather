@@ -15,11 +15,13 @@ import {
 } from '../../reducers';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { AppSettings } from 'src/app/reducers/app-settings.model';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-cities-page',
   templateUrl: './cities-page.component.html',
   styleUrls: ['./cities-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CitiesPageComponent implements OnInit {
   selectedCity$: Observable<City>;
