@@ -52,6 +52,7 @@ export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
             .subscribe((event: KeyboardEvent) => {
                 if (this.cityInput.value) {
                     this.subs.add(
+                        // select cities from the store first to allow caching. if not found api endpoint will be used instead.
                         this.cityStore
                             .select(queryCities)
                             .pipe(
