@@ -64,8 +64,10 @@ export const selectCityEntities = createSelector(
 
 export const queryCities = createSelector(
     selectCities,
-    (cities: City[], props: string) =>
-        cities.filter(city => city.name.includes(props))
+    cities => (query: string) =>
+        cities.filter(city =>
+            city.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        )
 );
 
 export const selectWeatherEntities = createSelector(

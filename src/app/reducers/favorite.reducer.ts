@@ -52,7 +52,7 @@ export function reducer(
     }
 
     case FavoriteActionTypes.LoadFavorites: {
-      return adapter.addAll(action.payload.favorites, state);
+      return adapter.addMany(action.payload.favorites, state);
     }
 
     case FavoriteActionTypes.ClearFavorites: {

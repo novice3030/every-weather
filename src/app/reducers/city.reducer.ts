@@ -49,7 +49,7 @@ export function reducer(state = initialState, action: CityActions): State {
         }
 
         case CityActionTypes.LoadCities: {
-            return adapter.addAll(action.payload.cities, state);
+            return adapter.addMany(action.payload.cities, state);
         }
 
         case CityActionTypes.ClearCities: {

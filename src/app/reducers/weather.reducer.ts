@@ -49,7 +49,7 @@ export function reducer(state = initialState, action: WeatherActions): State {
         }
 
         case WeatherActionTypes.LoadWeathers: {
-            return adapter.addAll(action.payload.weathers, state);
+            return adapter.addMany(action.payload.weathers, state);
         }
 
         case WeatherActionTypes.ClearWeathers: {

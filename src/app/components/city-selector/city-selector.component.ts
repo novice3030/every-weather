@@ -12,7 +12,7 @@ import {
     OnDestroy,
 } from '@angular/core';
 import { fromEvent, Observable, of } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, map } from 'rxjs/operators';
 import { UntypedFormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { City } from '../../reducers/city.model';
@@ -53,7 +53,10 @@ export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
                 if (this.cityInput.value) {
                     this.subs.add(
                         this.cityStore
-                            .select(queryCities, this.cityInput.value)
+                            .select(queryCities)
+                            .pipe(
+                                map(selector => selector(this.cityInput.value))
+                            )
                             .subscribe(cities => {
                                 if (cities.length > 0) {
                                     this.cities$ = of(cities);
