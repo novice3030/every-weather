@@ -13,7 +13,7 @@ import {
 } from '@angular/core';
 import { fromEvent, Observable, of } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { City } from '../../reducers/city.model';
 import { selectCities, getCurrentCity, queryCities } from '../../reducers';
@@ -28,7 +28,7 @@ import { SubSink } from 'SubSink';
 export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('autoCompleteInput')
     autoCompleteInput: ElementRef;
-    cityInput: FormControl = new FormControl();
+    cityInput: UntypedFormControl = new UntypedFormControl();
     cities$: Observable<City[]>;
     currentCity$: Observable<City>;
     private subs = new SubSink();
