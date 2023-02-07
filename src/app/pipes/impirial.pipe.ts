@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ImpirialPipe implements PipeTransform {
 
-  transform(value: number, active: boolean): number {
+  transform(value: number, active: boolean): string {
     if(active) {
-      return ((value * 9)/5) + 32;
+      return Math.floor(((value * 9)/5) + 32) + '\u00B0';
     }
-    return value;
+    return Math.floor(value) + '\u00B0';
   }
 
 }
