@@ -4,14 +4,12 @@ import { CitiesPageComponent } from './components/cities-page/cities-page.compon
 import { FavoritesPageComponent } from './components/favorites-page/favorites-page.component';
 
 const routes: Routes = [
-    { path: '', component: CitiesPageComponent },
-    { path: 'favorites', component: FavoritesPageComponent },
+  { path: '', component: CitiesPageComponent },
+  { path: 'favorites', component: FavoritesPageComponent },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    ],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,24 +1,24 @@
 <mat-toolbar>
+  <mat-icon>
+    ac_unit
+  </mat-icon>
+  <span>Every Weather</span>
+  <span class="spacer"></span>
+  <app-units-selector></app-units-selector>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
     <mat-icon>
-        ac_unit
+      menu
     </mat-icon>
-    <span>Every Weather</span>
-    <span class="spacer"></span>
-    <app-units-selector></app-units-selector>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-        <mat-icon>
-            menu
-        </mat-icon>
+  </button>
+  <mat-menu #appMenu="matMenu">
+    <button (click)="onCitiesWeatherClicked()" mat-menu-item>
+      Cities Weather
     </button>
-    <mat-menu #appMenu="matMenu">
-        <button (click)="onCitiesWeatherClicked()" mat-menu-item>
-            Cities Weather
-        </button>
-        <button (click)="onFavoritesClicked()" mat-menu-item>
-            Favorites
-        </button>
-    </mat-menu>
+    <button (click)="onFavoritesClicked()" mat-menu-item>
+      Favorites
+    </button>
+  </mat-menu>
 </mat-toolbar>
 <div class="outlet-container">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

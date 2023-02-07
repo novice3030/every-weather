@@ -7,23 +7,21 @@ import { Store, select } from '@ngrx/store';
 import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
-    selector: 'app-units-selector',
-    templateUrl: './units-selector.component.html',
-    styleUrls: ['./units-selector.component.scss'],
+  selector: 'app-units-selector',
+  templateUrl: './units-selector.component.html',
+  styleUrls: ['./units-selector.component.scss'],
 })
 export class UnitsSelectorComponent implements OnInit {
-    appSettings$: Observable<AppSettings>;
-    constructor(private appSettingsStore: Store<AppSettings>) {}
+  appSettings$: Observable<AppSettings>;
+  constructor(private appSettingsStore: Store<AppSettings>) {}
 
-    ngOnInit() {
-        this.appSettings$ = this.appSettingsStore.pipe(
-            select(selectAppSettings)
-        );
-    }
+  ngOnInit() {
+    this.appSettings$ = this.appSettingsStore.pipe(select(selectAppSettings));
+  }
 
-    onSelectionChanged(changeEvent: MatRadioChange) {
-        this.appSettingsStore.dispatch(
-            new SetDegreesUnit({ unit: changeEvent.value })
-        );
-    }
+  onSelectionChanged(changeEvent: MatRadioChange) {
+    this.appSettingsStore.dispatch(
+      new SetDegreesUnit({ unit: changeEvent.value })
+    );
+  }
 }

@@ -1,8 +1,8 @@
 <mat-radio-group
-    aria-label="Select an option"
-    [value]="(appSettings$ | async).degreesUnit"
-    (change)="onSelectionChanged($event)"
+  aria-label="Select an option"
+  [value]="(appSettings$ | async).degreesUnit"
+  (change)="onSelectionChanged($event)"
 >
-    <mat-radio-button value="METRIC">Metric</mat-radio-button>
-    <mat-radio-button value="IMPIRIAL">Impirial</mat-radio-button>
+  <mat-radio-button value="METRIC">Metric</mat-radio-button>
+  <mat-radio-button value="IMPIRIAL">Impirial</mat-radio-button>
 </mat-radio-group>

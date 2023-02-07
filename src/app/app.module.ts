@@ -32,48 +32,48 @@ import { UnitsSelectorComponent } from './components/units-selector/units-select
 import { ImpirialPipe } from './pipes/impirial.pipe';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        CityselectorComponent,
-        WeatherCardComponent,
-        MomentPipe,
-        CitiesPageComponent,
-        FavoritesPageComponent,
-        UnitsSelectorComponent,
-        ImpirialPipe,
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatAutocompleteModule,
-        MatRadioModule,
-        MatIconModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatTooltipModule,
-        MatInputModule,
-        MatMenuModule,
-        HttpClientModule,
-        MatButtonModule,
-        MatCardModule,
-        MomentModule,
-        StoreModule.forRoot(reducers, {
-            metaReducers,
-            runtimeChecks: {
-                strictStateImmutability: true,
-                strictActionImmutability: true,
-            },
-        }),
-        EffectsModule.forRoot([AppEffects]),
-        StoreDevtoolsModule.instrument({
-            maxAge: 25, // Retains last 25 states
-            logOnly: environment.production, // Restrict extension to log-only mode
-        }),
-    ],
-    providers: [],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    CityselectorComponent,
+    WeatherCardComponent,
+    MomentPipe,
+    CitiesPageComponent,
+    FavoritesPageComponent,
+    UnitsSelectorComponent,
+    ImpirialPipe,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatAutocompleteModule,
+    MatRadioModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatInputModule,
+    MatMenuModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatCardModule,
+    MomentModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      },
+    }),
+    EffectsModule.forRoot([AppEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

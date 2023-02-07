@@ -1,12 +1,12 @@
 .card {
-    max-width: 300px;
-    min-height: 120px;
-    margin: 10px;
-    &.clickable {
-        cursor: pointer;
-    }
+  max-width: 300px;
+  min-height: 120px;
+  margin: 10px;
+  &.clickable {
+    cursor: pointer;
+  }
 }
 
 .row {
-    margin-top: 5px;
+  margin-top: 5px;
 }

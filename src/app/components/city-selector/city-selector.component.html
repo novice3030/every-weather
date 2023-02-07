@@ -1,26 +1,26 @@
 <mat-form-field class="city-selector">
-    <input
-        #autoCompleteInput
-        type="text"
-        matInput
-        [formControl]="cityInput"
-        [matAutocomplete]="auto"
-        name="countryInput"
-        placeholder="search cities"
-        [matAutocomplete]="auto"
-    />
-    <mat-icon matSuffix>
-        search
-    </mat-icon>
-    <mat-autocomplete
-        #auto="matAutocomplete"
-        (optionSelected)="onOptionSelected($event)"
+  <input
+    #autoCompleteInput
+    type="text"
+    matInput
+    [formControl]="cityInput"
+    [matAutocomplete]="auto"
+    name="countryInput"
+    placeholder="search cities"
+    [matAutocomplete]="auto"
+  />
+  <mat-icon matSuffix>
+    search
+  </mat-icon>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onOptionSelected($event)"
+  >
+    <mat-option
+      *ngFor="let city of cities$ | async; trackBy: trackByCity"
+      [value]="city"
     >
-        <mat-option
-            *ngFor="let city of cities$ | async; trackBy: trackByCity"
-            [value]="city"
-        >
-            {{ city.name }}
-        </mat-option>
-    </mat-autocomplete>
+      {{ city.name }}
+    </mat-option>
+  </mat-autocomplete>
 </mat-form-field>

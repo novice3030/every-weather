@@ -1,8 +1,8 @@
 import {
-    ActionReducerMap,
-    createFeatureSelector,
-    createSelector,
-    MetaReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer,
 } from '@ngrx/store';
 import * as fromCity from '../reducers/city.reducer';
 import { environment } from '../../environments/environment';
@@ -16,112 +16,107 @@ import { City } from './city.model';
 export interface State {}
 
 export const reducers: ActionReducerMap<State> = {
-    cities: fromCity.reducer,
-    weathers: fromWeather.reducer,
-    appSettings: fromAppSettings.reducer,
-    favorites: fromFavorite.reducer,
+  cities: fromCity.reducer,
+  weathers: fromWeather.reducer,
+  appSettings: fromAppSettings.reducer,
+  favorites: fromFavorite.reducer,
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production
-    ? []
-    : [];
+  ? []
+  : [];
 
 export const selectCityState = createFeatureSelector<fromCity.State>('cities');
 
 export const selectWeatherState = createFeatureSelector<fromWeather.State>(
-    'weathers'
+  'weathers'
 );
 
 export const selectAppSettings = createFeatureSelector<fromAppSettings.State>(
-    'appSettings'
+  'appSettings'
 );
 
 export const selectFavoriteState = createFeatureSelector<fromFavorite.State>(
-    'favorites'
+  'favorites'
 );
 
 export const selectFavorites = createSelector(
-    selectFavoriteState,
-    fromFavorite.selectAll
+  selectFavoriteState,
+  fromFavorite.selectAll
 );
 
 export const selectFavoriteIds = createSelector(
-    selectFavoriteState,
-    fromFavorite.selectIds
+  selectFavoriteState,
+  fromFavorite.selectIds
 );
 
 export const selectCities = createSelector(selectCityState, fromCity.selectAll);
 
 export const selectCurrentCityId = createSelector(
-    selectCityState,
-    fromCity.getSelectedCityId
+  selectCityState,
+  fromCity.getSelectedCityId
 );
 
 export const selectCityEntities = createSelector(
-    selectCityState,
-    fromCity.selectEntities
+  selectCityState,
+  fromCity.selectEntities
 );
 
 export const queryCities = createSelector(
-    selectCities,
-    cities => (query: string) =>
-        cities.filter(city =>
-            city.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-        )
+  selectCities,
+  cities => (query: string) =>
+    cities.filter(city =>
+      city.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+    )
 );
 
 export const selectWeatherEntities = createSelector(
-    selectWeatherState,
-    fromWeather.selectEntities
+  selectWeatherState,
+  fromWeather.selectEntities
 );
 
 export const getCurrentCity = createSelector(
-    selectCityEntities,
-    selectCurrentCityId,
-    (cityEntities, cityId) => cityEntities[cityId]
+  selectCityEntities,
+  selectCurrentCityId,
+  (cityEntities, cityId) => cityEntities[cityId]
 );
 
 export const selectAllWeathers = createSelector(
-    selectWeatherState,
-    fromWeather.selectAll
+  selectWeatherState,
+  fromWeather.selectAll
 );
 
 export const getSelectedCityWeather = createSelector(
-    selectAllWeathers,
-    selectCurrentCityId,
-    (weathers, cityId) =>
-        weathers.find(
-            weather => weather.cityId === cityId && !weather.isForecast
-        )
+  selectAllWeathers,
+  selectCurrentCityId,
+  (weathers, cityId) =>
+    weathers.find(weather => weather.cityId === cityId && !weather.isForecast)
 );
 
 export const getSelectedCityWeatherForcasts = createSelector(
-    selectAllWeathers,
-    selectCurrentCityId,
-    (weathers, cityId) =>
-        weathers.filter(
-            weather => weather.cityId === cityId && weather.isForecast
-        )
+  selectAllWeathers,
+  selectCurrentCityId,
+  (weathers, cityId) =>
+    weathers.filter(weather => weather.cityId === cityId && weather.isForecast)
 );
 
 export const getWeatherByCityId = createSelector(
-    selectAllWeathers,
-    (weathers, props) =>
-        weathers.find(weather => weather.cityId === props.cityId)
+  selectAllWeathers,
+  (weathers, props) => weathers.find(weather => weather.cityId === props.cityId)
 );
 
 export const isSelectedCityInFavorites = createSelector(
-    selectFavoriteIds,
-    selectCurrentCityId,
-    (ids: string[], cityId) => {
-        if (cityId && ids && ids.length > 0) {
-            return ids.includes(cityId);
-        }
-        return false;
+  selectFavoriteIds,
+  selectCurrentCityId,
+  (ids: string[], cityId) => {
+    if (cityId && ids && ids.length > 0) {
+      return ids.includes(cityId);
     }
+    return false;
+  }
 );
 
 export const isImpirial = createSelector(
-    selectAppSettings,
-    appSettings => appSettings.degreesUnit === 'IMPIRIAL'
+  selectAppSettings,
+  appSettings => appSettings.degreesUnit === 'IMPIRIAL'
 );

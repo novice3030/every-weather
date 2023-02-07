@@ -1,35 +1,35 @@
 .cities-search-container {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .weather-container {
-    margin-top: 10px;
-    margin-left: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 .forecast-card {
-    margin-right: 10px;
-    margin-top: 10px;
-    width: 300px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 300px;
 }
 .add-to-favorites-button {
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 .favorite-icon {
-    &.remove {
-        text-decoration: line-through;
-    }
+  &.remove {
+    text-decoration: line-through;
+  }
 }
 
 .strike-center {
-    position: relative;
-    white-space: nowrap; /* would center line-through in the middle of the wrapped lines */
+  position: relative;
+  white-space: nowrap; /* would center line-through in the middle of the wrapped lines */
 }
 
 .strike-center:after {
-    border-top: 2px solid #000;
-    position: absolute;
-    content: '';
-    right: 0;
-    top: 50%;
-    left: 0;
+  border-top: 2px solid #000;
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 50%;
+  left: 0;
 }
