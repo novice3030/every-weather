@@ -17,7 +17,7 @@ import { FormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { City } from '../../reducers/city.model';
 import { selectCities, getCurrentCity, queryCities } from '../../reducers';
-import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { SubSink } from 'SubSink';
 
 @Component({

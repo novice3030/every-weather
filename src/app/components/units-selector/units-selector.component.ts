@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AppSettings } from 'src/app/reducers/app-settings.model';
 import { Store, select } from '@ngrx/store';
-import { MatRadioChange } from '@angular/material';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
     selector: 'app-units-selector',
