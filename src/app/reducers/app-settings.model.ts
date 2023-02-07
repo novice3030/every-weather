@@ -1,3 +1,3 @@
 export interface AppSettings {
-    degreesUnit: 'IMPIRIAL' | 'METRIC'
+    degreesUnit: 'IMPIRIAL' | 'METRIC';
 }

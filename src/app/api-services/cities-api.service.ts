@@ -1,9 +1,9 @@
-import { API_KEY } from './consts'
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
-import { City } from '../reducers/city.model'
-import { map, tap } from 'rxjs/operators'
+import { API_KEY } from './consts';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { City } from '../reducers/city.model';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -22,9 +22,9 @@ export class CitiesApiService {
                         return {
                             name: result.LocalizedName,
                             id: result.Key,
-                        }
+                        };
                     })
                 )
-            )
+            );
     }
 }

@@ -25,7 +25,6 @@ export class AppComponent {
             })
         );
         this.favoriteStore.dispatch(new SelectCity({ cityId: '215854' }));
-       
     }
 
     onCitiesWeatherClicked() {

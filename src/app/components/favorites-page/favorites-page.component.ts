@@ -1,5 +1,9 @@
 import { AddCity } from './../../reducers/city.actions';
-import { selectFavorites, getWeatherByCityId, isImpirial } from './../../reducers/index';
+import {
+    selectFavorites,
+    getWeatherByCityId,
+    isImpirial,
+} from './../../reducers/index';
 import {
     LoadFavoritesPage,
     LoadFavoritesFromLocalStorage,
@@ -29,8 +33,8 @@ export class FavoritesPageComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-      this.isImpirial$ = this.appSettingsStore.pipe(select(isImpirial));  
-      this.favoriteStore.dispatch(new LoadFavoritesPage());
+        this.isImpirial$ = this.appSettingsStore.pipe(select(isImpirial));
+        this.favoriteStore.dispatch(new LoadFavoritesPage());
         this.favorites$ = this.favoriteStore.pipe(select(selectFavorites));
     }
 

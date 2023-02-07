@@ -87,6 +87,10 @@ export class CityselectorComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
+    trackByCity(value: City, index: number) {
+        return value.id;
+    }
+
     ngOnDestroy() {
         this.subs.unsubscribe();
     }

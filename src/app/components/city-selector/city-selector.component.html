@@ -16,7 +16,10 @@
         #auto="matAutocomplete"
         (optionSelected)="onOptionSelected($event)"
     >
-        <mat-option *ngFor="let city of cities$ | async" [value]="city">
+        <mat-option
+            *ngFor="let city of cities$ | async; trackBy: trackByCity"
+            [value]="city"
+        >
             {{ city.name }}
         </mat-option>
     </mat-autocomplete>

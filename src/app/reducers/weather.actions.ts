@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store'
-import { Update } from '@ngrx/entity'
-import { Weather } from './weather.model'
+import { Action } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
+import { Weather } from './weather.model';
 
 export enum WeatherActionTypes {
     LoadWeathers = '[Weather] Load Weathers',
@@ -18,71 +18,71 @@ export enum WeatherActionTypes {
 }
 
 export class LoadWeathers implements Action {
-    readonly type = WeatherActionTypes.LoadWeathers
+    readonly type = WeatherActionTypes.LoadWeathers;
 
     constructor(public payload: { weathers: Weather[] }) {}
 }
 
 export class AddWeather implements Action {
-    readonly type = WeatherActionTypes.AddWeather
+    readonly type = WeatherActionTypes.AddWeather;
 
     constructor(public payload: { weather: Weather }) {}
 }
 
 export class UpsertWeather implements Action {
-    readonly type = WeatherActionTypes.UpsertWeather
+    readonly type = WeatherActionTypes.UpsertWeather;
 
     constructor(public payload: { weather: Weather }) {}
 }
 
 export class AddWeathers implements Action {
-    readonly type = WeatherActionTypes.AddWeathers
+    readonly type = WeatherActionTypes.AddWeathers;
 
     constructor(public payload: { weathers: Weather[] }) {}
 }
 
 export class UpsertWeathers implements Action {
-    readonly type = WeatherActionTypes.UpsertWeathers
+    readonly type = WeatherActionTypes.UpsertWeathers;
 
     constructor(public payload: { weathers: Weather[] }) {}
 }
 
 export class UpdateWeather implements Action {
-    readonly type = WeatherActionTypes.UpdateWeather
+    readonly type = WeatherActionTypes.UpdateWeather;
 
     constructor(public payload: { weather: Update<Weather> }) {}
 }
 
 export class UpdateWeathers implements Action {
-    readonly type = WeatherActionTypes.UpdateWeathers
+    readonly type = WeatherActionTypes.UpdateWeathers;
 
     constructor(public payload: { weathers: Update<Weather>[] }) {}
 }
 
 export class DeleteWeather implements Action {
-    readonly type = WeatherActionTypes.DeleteWeather
+    readonly type = WeatherActionTypes.DeleteWeather;
 
     constructor(public payload: { id: string }) {}
 }
 
 export class DeleteWeathers implements Action {
-    readonly type = WeatherActionTypes.DeleteWeathers
+    readonly type = WeatherActionTypes.DeleteWeathers;
 
     constructor(public payload: { ids: string[] }) {}
 }
 
 export class ClearWeathers implements Action {
-    readonly type = WeatherActionTypes.ClearWeathers
+    readonly type = WeatherActionTypes.ClearWeathers;
 }
 
 export class GetCityCurrentWeather implements Action {
-    readonly type = WeatherActionTypes.GetCityCurrentWeather
+    readonly type = WeatherActionTypes.GetCityCurrentWeather;
 
     constructor(public payload: { cityId: string }) {}
 }
 
 export class GetCityWeatherForecast implements Action {
-    readonly type = WeatherActionTypes.GetCityWeatherForecast
+    readonly type = WeatherActionTypes.GetCityWeatherForecast;
 
     constructor(public payload: { cityId: string }) {}
 }
@@ -99,4 +99,4 @@ export type WeatherActions =
     | DeleteWeathers
     | ClearWeathers
     | GetCityCurrentWeather
-    | GetCityWeatherForecast
+    | GetCityWeatherForecast;

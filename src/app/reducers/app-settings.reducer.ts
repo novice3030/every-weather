@@ -27,7 +27,7 @@ export function reducer(
         case AppSettingsActionTypes.SetDegreesUnit: {
             return {
                 ...state,
-                degreesUnit: action.payload.unit
+                degreesUnit: action.payload.unit,
             };
         }
 
